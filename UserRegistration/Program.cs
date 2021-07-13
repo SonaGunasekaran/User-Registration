@@ -13,11 +13,13 @@ namespace UserRegistration
             Console.Write("Enter your last name:");
             string lastName = Console.ReadLine();
             user.Check(lastName);
+            Console.Write("Enter your Email id:");
             string email= Console.ReadLine();
             user.CheckMail(email);
-            
-
-
+            Console.Write("Enter your Mobile Number:");
+            string num = Console.ReadLine();
+            user.PhoneNumberCheck(num);
+            Console.Write("Enter your Password:");
         }
     }
 }
