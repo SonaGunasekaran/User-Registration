@@ -13,6 +13,10 @@ namespace UserRegistration
             Console.Write("Enter your last name:");
             string lastName = Console.ReadLine();
             user.Check(lastName);
+            string email= Console.ReadLine();
+            user.CheckMail(email);
+            
+
 
         }
     }
