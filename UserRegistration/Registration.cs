@@ -52,7 +52,7 @@ namespace UserRegistration
         }
         public void PasswordCheck(string psw)
         {
-            string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,20}$";
+            string pattern = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&-+=()])[a-zA-Z0-9]{8,20}$";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(psw))
             {
