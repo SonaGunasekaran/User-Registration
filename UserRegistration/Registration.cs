@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 
 namespace UserRegistration
 {
-    class Registration
-    {
+   public class Registration
+   {
         public void Check(string name)
         {
             //regex pattern is created to check validity
