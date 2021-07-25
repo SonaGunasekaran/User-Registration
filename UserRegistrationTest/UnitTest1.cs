@@ -122,5 +122,17 @@ namespace UserRegistrationTest
             string actual = UserRegistrationExp.ValidateUserRegistration(user);
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        [DataRow("dstvdgmail.com", "0")]
+        [DataRow("dstvd@gmail.com", "1")]
+        [DataRow("dstvd//@gmail.com", "0")]
+        [DataRow("dstvd@gm.c", "0")]
+        [DataRow("dstvd@gmail.co", "1")]
+        [DataRow("dst.vd@gmail.com", "1")]
+        public void ParameterizedTestForMail(string mail, string expected)
+        {
+            string actual =registration.CheckMail(mail);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
