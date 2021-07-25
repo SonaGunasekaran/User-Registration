@@ -7,10 +7,13 @@ namespace UserRegistrationTest
     public class UnitTest1
     {
        UserRegistrationExp registration;
+       UserAnnotation user;
         [TestInitialize]
         public void TestSetup()
         {
             registration = new UserRegistrationExp();
+            user = new UserAnnotation();
+
         }
         [TestCategory("Name")]
         [TestMethod]
@@ -67,6 +70,44 @@ namespace UserRegistrationTest
                 Assert.AreEqual(ce.Message, expected);
             }
         }
-
+        [TestMethod]
+        public void CheckValidation1()
+        {
+            user.firstName = "Da";
+            user.lastName = "Salvatore";
+            user.phoneNumber = "4567892356";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "First Name should be min of 3";
+            string actual = UserRegistrationExp.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Checks for validation using annotation = if phone number not valid
+        /// </summary>
+        [TestMethod]
+        public void CheckValidation2()
+        {
+            user.firstName = "Damon";
+            user.lastName = "Salvatore";
+            user.phoneNumber = "45678923";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "Phone number should exactly 10";
+            string actual = UserRegistrationExp.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CheckValidation3()
+        {
+            user.firstName = "Damon";
+            user.lastName = "S";
+            user.phoneNumber = "45678923";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "Last Name should be min of 3";
+            string actual = UserRegistrationExp.TestUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

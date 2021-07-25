@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace UserRegistration
 {
@@ -9,7 +10,7 @@ namespace UserRegistration
    {
         public string CheckName(string name)
         {
-            string pattern = "^[A-Z][a-z]{2}[a-z]*$";
+            string pattern = "^[A-Z][a-z]{3}[a-z]*$";
             Regex regex = new Regex(pattern);
             try
             {
@@ -110,6 +111,34 @@ namespace UserRegistration
             {
                 return (e.Message);
             }
+        }
+        public static string TestUserRegistration(UserAnnotation userRegistration)
+        {
+            ValidationContext validationContext = new ValidationContext(userRegistration, null, null);
+           List<ValidationResult> validationResults = new List<ValidationResult>();
+          bool valid = Validator.TryValidateObject(userRegistration, validationContext, validationResults, true);
+            try
+            {
+                if (!valid)
+                {
+                    foreach (ValidationResult validationResult in
+                validationResults)
+                        foreach (ValidationResult i in validationResults)
+                        {
+                            return i.ErrorMessage;
+                        }
+                    return "No feild available";
+                }
+                else
+                {
+                    return "Satisfied all the validation";
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
         }
     }
 }
