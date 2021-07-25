@@ -134,5 +134,40 @@ namespace UserRegistrationTest
             string actual =registration.CheckMail(mail);
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void ValidityUsingCustomException()
+        {
+            user.firstName = "D";
+            user.lastName = "Salvatore";
+            user.phoneNumber = "45678923";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "First Name should be min of 3";
+            string actual = UserRegistrationExp.ValidateUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        public void ValidityUsingCustomException1()
+        {
+            user.firstName = "Damon";
+            user.lastName = "Salvatore";
+            user.phoneNumber = "45678923";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "Phone number should exactly 10";
+            string actual = UserRegistrationExp.ValidateUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+        public void ValidityUsingCustomException2()
+        {
+            user.firstName = "Damon";
+            user.lastName = "Salvatore";
+            user.phoneNumber = "4567892356";
+            user.EmailAddress = "dstvd@gmail.com";
+            user.Password = "Dasa@1mjh";
+            string expected = "happy";
+            string actual = UserRegistrationExp.ValidateUserRegistration(user);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

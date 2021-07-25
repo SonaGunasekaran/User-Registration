@@ -134,9 +134,9 @@ namespace UserRegistration
                 {
                     foreach (ValidationResult i in validationResults)
                     {
-                        return "Sad";
+                        throw new CustomException(CustomException.ExceptionType.INVALID_EXCEPTION, "" + i.ToString());
                     }
-                    return "Sad";
+                    throw new CustomException(CustomException.ExceptionType.NULL_FIELD_EXCEPTION, "No such Field is Found");
                 }
                 //if all the validations are true then it returns happy
                 else
